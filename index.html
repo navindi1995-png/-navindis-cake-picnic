@@ -1,1 +1,124 @@
 
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> 100 Cakes Challange 🍰</title>
+<style>
+  :root{
+    --pink:#f7b7c8; --pink2:#ffe6ee; --cream:#fffaf6; --choc:#6f4a43;
+    --berry:#b34c74; --ink:#4a3940; --card:#ffffff; --line:#f2d8e1;
+    --good:#3f8f67; --shadow:0 16px 40px rgba(104,66,80,.12);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, #fff 0 4%, transparent 5%),
+      linear-gradient(145deg,#fff8fb 0%,#fff6ed 100%);
+    color:var(--ink); min-height:100vh;
+  }
+  .wrap{max-width:980px;margin:auto;padding:28px 18px 64px}
+  .hero{text-align:center;padding:24px 10px}
+  .hero .cake{font-size:58px;filter:drop-shadow(0 7px 10px #f3cad7)}
+  h1{font-size:clamp(32px,6vw,56px);margin:6px 0;color:var(--berry);letter-spacing:-1.5px}
+  .sub{font-size:18px;line-height:1.55;max-width:700px;margin:0 auto;color:#725f66}
+  .card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:var(--shadow);margin-top:20px}
+  h2{margin:0 0 14px;color:var(--choc)}
+  label{display:block;font-weight:700;margin:14px 0 7px}
+  textarea,input{width:100%;border:1.5px solid #edcbd6;background:#fff;border-radius:16px;padding:13px 14px;font:inherit;color:var(--ink);outline:none}
+  textarea:focus,input:focus{border-color:var(--pink)}
+  textarea{min-height:130px;resize:vertical}
+  .hint{font-size:13px;color:#806d74;margin-top:7px;line-height:1.4}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}.card{padding:18px}}
+  button{
+    border:0;border-radius:999px;padding:13px 18px;font:700 15px inherit;cursor:pointer;
+    background:var(--berry);color:white;box-shadow:0 8px 18px rgba(179,76,116,.2)
+  }
+  button.secondary{background:#fff;color:var(--berry);border:1.5px solid #e9b7c8;box-shadow:none}
+  button.good{background:var(--good)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .hidden{display:none!important}
+  .result{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+  .person{background:#fff9fb;border:1px solid #f0d2dc;border-radius:18px;padding:14px}
+  .person b{display:block;color:var(--berry);font-size:17px;margin-bottom:6px}
+  code{background:#fff;border:1px dashed #dca3b6;border-radius:9px;padding:4px 7px;color:#7e3150}
+  .cake-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin-top:16px}
+  .cake-item{padding:12px 13px;background:#fff9fb;border:1px solid #f1d6df;border-radius:16px}
+  .num{font-size:12px;color:#a26f81;font-weight:700}
+  .notice{padding:12px 14px;border-radius:14px;background:#fff4c9;color:#6e5b1f;margin-top:12px;font-size:14px;line-height:1.45}
+  .success{background:#eaf8ef;color:#2d694a}
+  .footer{text-align:center;margin-top:28px;color:#a17e8b;font-size:13px}
+  .tabs{display:flex;justify-content:center;gap:8px;margin:18px 0}
+  .tabs button{box-shadow:none}
+  .tabs .secondary.active{background:var(--berry);color:#fff;border-color:var(--berry)}
+  .pill{display:inline-block;background:var(--pink2);color:#8b4560;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+</style>
+<style>html,body,#root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;margin:0;padding:0}html,body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif!important}button,input,textarea,select{font-family:inherit}html{background-color:transparent}html.chatgptOled.dark,html.mobileSkybridge.dark{background-color:#000}@supports (font: -apple-system-body){html.mobileSkybridge{font:-apple-system-body}}html.desktopSkybridge.dark{background-color:#1e1e1e}html.desktopSkybridge [data-openai-titlebar]{padding-left:calc(8px + var(--openai-titlebar-left-inset, 0px));padding-right:8px}html.transparentSkybridgeBackground,html.transparentSkybridgeBackground.dark{background-color:transparent}html.androidSkybridge,html.androidSkybridge body,html.androidSkybridge *{-webkit-tap-highlight-color:rgba(255,255,255,0)}html.androidSkybridge *::selection,html.androidSkybridge *::-moz-selection{background:#fff0;color:inherit}</style></head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="cake">🎂</div>
+    <h1>Navindi`s Cake Picnic</h1>
+    <p class="sub">Ten bakers. One hundred cakes. Ten secret cakes each. Generate the draw, share a private code, and keep every assignment a surprise. 🍓✨</p>
+  </section>
+
+  <div class="tabs" id="tabs">
+    <button class="secondary" id="participantTab" onclick="showMode('participant')">🍰 My Cakes</button>
+    
+  </div>
+
+  <section class="card" id="participantView">
+    <span class="pill">SECRET DRAW</span>
+    <h2 style="margin-top:10px">Reveal my cakes 🤫</h2>
+    <p>Enter the private code your organiser sent you.</p>
+    <label for="secretCode">Secret code</label>
+    <input id="secretCode" placeholder="e.g. CAKE-4821" autocomplete="off">
+    <div class="actions">
+      <button onclick="revealCakes()">✨ Reveal My 10 Cakes</button>
+    </div>
+    <div id="participantMessage"><div class="notice ">This setup file is for the organiser. Generate the draw first, then download the <b>Shareable Webpage</b> for participants.</div></div>
+    <div id="myCakes" class="cake-list"></div>
+  </section>
+
+  
+
+  <div class="footer">Made with cake, secrecy &amp; a tiny bit of magic ✨</div>
+</div>
+
+
+
+
+<script>
+const encryptedAssignments=[{"hash":"VwSK30WdlwII9Ee5DHTGmQG9bQxnyc89H8gwsvQw/zk=","salt":"Usr3gxroilvnkcMp3WvIZw==","iv":"2/gxUAzO05jATN0Q","data":"BZBD0Y9Aa1vL2OcCrvcCD/DEM+smZlMefwwptO9yfa4+ZWfUY3iI0PDuou5J4VDsWWoxG0jOTOFOzouOJLAZGQRYI3Z/6W2CGUhrv8thLuQxw3xXeu2zuGnRn6mdoHu/cmS17rk7kspCP36PuJKp3UKePd5S+NRTop87Go6lrk5K+ljdo0TYG9UqQ6dbxgb2fNnUXh2/oK56MDlqRITckEku03OTvfrQq5c/HOAgdlH3aI2jACgOH2RxFOQJFarIokXsbcdgK5byTC0TbJbW9ueX54Js045GgUDf5wo6OcKBN8jHCvy65jW0iWFqTA7dAm8j"},{"hash":"N6XcaILPiVOuoMI5qE0nQstD+50FpUu8ZtDDw+882Zw=","salt":"p+oCWEmhzQlXkyKyUD/0iw==","iv":"jT1KI8RoFDfawym1","data":"bYXhpsgz80SGfCZgffkGZnnjSde61I+7kW9efxH/DZohw/uOOQuoOhovbyz2JoPNxyaU0X7ifRmm0dESg4NcXEGWIQwll+pVI/DWQP++Y61rVh7cSILzPRzBoqOefBdje9yc2XH8s/4XMfHq9J30FRdYC7vanJNwxzE9bvxLqvi10simCVy64oD+CH+CE8DVJN//UV9d/nDM6d3vbhDlsxJn2kfTS1Se/CsgOK441dAwwGoh6zkTWn/goCxE58C1Nxsyw8aMRE9U5VJYGE++oH1xZCbQ2i3X0IkbwAngySg4tg=="},{"hash":"c9oBCNclEpu8dANV6Q1dPE8heZHnqQ5Ps8ER2NAB680=","salt":"V2PoDeINnBivWCBNW+TpRA==","iv":"o3kV4726O5ayyGyN","data":"C+KB7EpwXnDKMAmdG/kmH8KH55pcZCBNdnljysvS3Q1ym+pUKvdOuG136uttS2KDDavbnkAA0k4cDY8rqRgnOsN7v2YloFqqREBw2UOqQn1OtWomsld7/GTp8MTq2fFsfme3W5uakEutnOjqCIPrUs8sosr2I24osi7rBe8Qorqr7AcJEXRFNTEkORk6oBmEIKG4hEEsGMe3nuqK1o9jaHWTDfGtuqo26CB+BM3G3sSNweVTRywrTsq1inhYN3DfLzag9y6A4rmUVYlCxVLmZPMgYrZ5d1KS5OwZHB71UPX9WYE6RDHzR2Y41qU="},{"hash":"KIQkcf+AWR4eXRDqTMb45fQ6ZVUfD8sEtVTygNbC2Fw=","salt":"Rbxk5pRYQLpIGMUmXfrvQQ==","iv":"X4dvDWvsWhZ+rgJ6","data":"R5ReRJoOFerEHFRDUnkpwjGNULE3oBXtV+3ZMWk6bZfJh7kjBvB0osFDfc5mAeyweMbxvcRq/GGi0+xroQaK/IYYe9+OZqUDnhmQg1E+VAfs8WKEolAI8j4DFVVKo9LqQChRSmdwBg9gewBGs5LEA9p3bHvPn9dSNL87OE0Imgb+5ynWfHwb1DlZOcHE0WH2WRljlhJ4I42MgZSnx6niId8t+HA1lHuwogCOeqaz3bMeklf/sQceyk5xt+BHEvlttZ+ma2PJGlk5s34xLZT2H35R8oIi7Nn9nwSaaTUExBWd3Q=="},{"hash":"QmvWQQ4X/j1ZMIaYVerMkHXmlsykG8bDMTbMhBtSGYs=","salt":"XexvgWBCBs4HE86DZWRH5g==","iv":"tLreKR4gYa8a+DS5","data":"Kxm20HYs6Afg5/FItHBn3hc4gAatDSTgsx5pc7RgkhGkqoo20SamK3hMfGj6CxtpHZ9UMoQK64AINfOGUx9uAYUWEIFemcjJLShPUEW7X56nbejdoCCaxmrIujjJCurgzvmBKL+mON30iCoyh9azluqYDeeB4lb1xtAAgPQu/hkRSQ9b7p+2+BfugqZYGjUiIOwAH2s8Lk3myfMjVxIg+ZS3erH1PgtDS8SuT5afQlPUE8UsSCpOuvMC8hUAQQQ8zvEzjgQstxcgKpfExu+TH+gE"},{"hash":"SER9+Yw9qbO0ZXlUyw90aoboMi0YFpucTpeFw0XpJgQ=","salt":"v4e7FF4IxlvyOe2IiJ9z4Q==","iv":"kyMCgMdf4mEEVBzb","data":"yC6SgaCzl5ywVaNL1xMQAuT8GqFEANUGIWAUiX7W+oeENDN8JAMTj11wjmJaVRY4/WV4r/oOzyW09OpLD4GyPQCzm4kleCD0W3e2CFtSZIa4KT5NV4KWF4cqBAPDLdofkKoXzlef6GlRpFfHeleobtYar17uPVplzbVqQTVg9lxHNflZSU6VdlxD3J4QJKRsa9rOdV1eZBftTRZwWXa4q+ndtHA+On5gLvPqPajdqtoZw5Bq9wig0lvGhK1VdnfdlEAJkKkl8WBT/5K3mnGxQavafYdpAQ34BX78jA=="},{"hash":"eox//6TTl4suYewHzomR1hgTR3UXmjdeeHnsojHRwrY=","salt":"sjTLass/NVAN0dgh6MTquQ==","iv":"ATG02SwCIY9AYJbD","data":"S8Qgq6158u/XW7AxKByUjp2W8rNPGp3lz3GTFh9/9q+kfRxRNBESfiS6Beal/lB+1sFp8Hgmwric2Z4R6VR9wS6okxmtIgXoPlyQao1WG/Nej6d2D97Dt8YaRGlZy6k6l0uZL7piGxbNV3GJ5Tbbh5sj/alydBN7b8ZzY1wemGWrNViYb3OHdgmj5J9XqAMQc7rp04h8ToxV0JKbXuPI6aVuVxcW1IJoFlVRpUF8ix69kP280sbTBUG3u4iaR2R6j0obQ/kiHa1R0faqveFgZNZC8V98QrOhE6tlBrOcPzMVPxJZZvmIVqI1"},{"hash":"RDg95DZ0R8DV04XrfBWrqBEASZlD7eyBkOggZOCw12k=","salt":"6mjubSUnDID2c+/86RZt7w==","iv":"pAlpy0Otb/EQP2gN","data":"+aYjPeaXqPX3H/laKc+RWQwxfEOiT0eQy4wQ+pn78OdVpy0uEFECTMM5KM/FuwkWGhbK2SBXVqJmz9JgZk1d53HNb9RgXw5AWedqLH9PiCoszCjz2rGzLRq4CnAEBkpGZZADRK4qjfamlq+kimUmsPgB5D25kDu5jALSq+7ZNalJQPIBEz3VaNwyxD/hBfxqM/ToiFxRc1mrgAix+Y76DbzpeeIsAlkwOYKPwxUaH2Hc5H81ym12gLgLG2f/iwKv4npxRvQD/xWXB4MJDyEX8FEs3KlA23+oLdmn6nsFozna2sdWgpZ+ob1O5Q=="},{"hash":"8YSaztnmt5Fx1V6NF6ifzm+aEh3Qe4Mb6X1xXJPRq4I=","salt":"BKuTCvc1q6UjnSkWYW/orw==","iv":"evQnwiBQjW+c4kbQ","data":"BjSHYBWTpSknElH8vMngo0CEpffNkgipwIPjhJduGAzBIlVlQfIAmnlllxlfGNqAyT3G62D/2gr+6mBIH7zGAVWE9RWpxFpbWqXbfjpJJzcbFyYfO8SmuuuUmHKYaCLZcWoE6srKd5XahoqGJxx/wOSjcrBlnf4Me79CxBsjYqLQEMS9UGlyduKicSyh8o7ViTw2cbW78v9ZAh9pKtkOTmzs8rojuf8wb0TzvokAm4NR+L30mJ0w4Z9xfySj6Wxxb7chIB6hvBpmbry1j754NbvcBB2jm2BKek1CZoYIFL63nmN9"},{"hash":"r1iafXSenGgRc9MoPO0yT5gpBaFspFIfMDWS6gwb+x8=","salt":"SdD3ZNQkxh8iqPyVop6x5A==","iv":"0Qs254I9W069ouOE","data":"rtR1YVJ1pa2bU4pyZS4k14IrxJzvWeHTQgf/oZiDcLtmlMgd8TDZGxM9AtS8wgAiTJUBwGz03D5IN6RsSzUO6SPQYZOsA/tPi6xniyCzxAzbsifFfk4swAtho4cNR+Po61PtsbujMqM30D5+N8qlwcOZF2NvkhDG98BM+Ny/Kr4Kmu3b35L+12xESVWZUNtokdt4/r2l7237viKgYMJrVIt7+nZd/J7WdXYmGAv1gdU1pB8vtNHYEpKvCp6Hk3BfcEFysB3CJNrIZXFsFGzqj85YIqVNWtn66xmQVr3n"}];
+function fromB64(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0))}
+function b64(bytes){return btoa(String.fromCharCode(...new Uint8Array(bytes)))}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function deriveKey(code,salt){
+ const raw=new TextEncoder().encode(code);
+ const base=await crypto.subtle.importKey('raw',raw,'PBKDF2',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+}
+async function revealCakes(){
+ const code=document.getElementById('secretCode').value.trim().toUpperCase();
+ const msg=document.getElementById('participantMessage'), out=document.getElementById('myCakes');
+ out.innerHTML='';
+ if(!code){msg.innerHTML='<div class="notice">Please enter your secret code first 🍰</div>';return}
+ const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code));
+ const hs=b64(h), rec=encryptedAssignments.find(x=>x.hash===hs);
+ if(!rec){msg.innerHTML='<div class="notice">That code was not recognised. Check it and try again.</div>';return}
+ try{
+   const key=await deriveKey(code,fromB64(rec.salt));
+   const dec=await crypto.subtle.decrypt({name:'AES-GCM',iv:fromB64(rec.iv)},key,fromB64(rec.data));
+   const p=JSON.parse(new TextDecoder().decode(dec));
+   msg.innerHTML='<div class="notice success">🎉 Hi <b>'+escapeHtml(p.name)+'</b>! These are your 10 secret cakes.</div>';
+   p.cakes.forEach((cake,i)=>{
+     const d=document.createElement('div'); d.className='cake-item';
+     d.innerHTML='<div class="num">CAKE '+(i+1)+'</div><b>🍰 '+escapeHtml(cake)+'</b>';
+     out.appendChild(d);
+   });
+ }catch(e){msg.innerHTML='<div class="notice">Could not unlock this assignment. Please check your code.</div>'}
+}
+document.getElementById('secretCode').addEventListener('keydown',e=>{if(e.key==='Enter')revealCakes()});
+</script></body></html>
